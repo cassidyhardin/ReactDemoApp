@@ -12,8 +12,15 @@ class Counters extends Component {
     ],
   };
 
-  handleDelete = (counterId) => {
-    const counters = this.state.counters.filter((c) => c.id !== counterId);
+  handleIncrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value++;
+    this.setState({ counters });
+  };
+  handleDelete = (counter) => {
+    const counters = this.state.counters.filter((c) => c.id !== counter.id);
     this.setState({ counters });
   };
   handleReset = () => {
@@ -36,6 +43,7 @@ class Counters extends Component {
           <Counter
             key={counter.id}
             onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
             counter={counter}
             // we can pass an entier counter as the object rather than defining each indivdual attribute to be passed
             // value={counter.value}

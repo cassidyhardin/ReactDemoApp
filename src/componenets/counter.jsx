@@ -2,10 +2,8 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   /* state attributes calling to pop values is only excuted when the attribute/componenet is initialzied */
-
   state = {
-    value: this.props.counter.value,
-    tags: [],
+    tags: ["tag1", "tag2"],
   };
   styles = {
     fontSize: 20,
@@ -28,11 +26,6 @@ class Counter extends Component {
   override propertites of state object if they are already existing, otherwise will be merged in as state properties
   allows for react to be aware of state changes
   */
-
-  handleIncrement = (amount) => {
-    console.log(amount);
-    this.setState({ value: this.state.value + 1 });
-  };
 
   renderTags() {
     if (this.state.tags.length === 0)
@@ -62,7 +55,7 @@ class Counter extends Component {
           {this.formatValue()}{" "}
         </span>
         <button
-          onClick={() => this.handleIncrement({ id: 5 })}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           className="btn btn-secondary btn-sm"
         >
           {" "}
@@ -78,7 +71,7 @@ class Counter extends Component {
         {this.renderTags()}
 
         <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
+          onClick={() => this.props.onDelete(this.props.counter)}
           className="btn btn-danger btn-sm m-2"
         >
           Delete Tag
@@ -89,12 +82,12 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatValue() {
-    const { value } = this.state;
+    const { value } = this.props.counter;
     return value === 0 ? "Zero" : value;
   }
 }
