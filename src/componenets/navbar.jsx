@@ -11,7 +11,7 @@ const NavBar = ({ counter_number }) => {
   */
   return (
     <nav className="navbar navbar-light bg-light">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="https://github.com/cassidyhardin">
         Navbar{" "}
         <span className="badge badge-pill badge-secondary">
           {counter_number}

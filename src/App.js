@@ -22,11 +22,12 @@ class App extends Component {
 
   props needs to be passed as a paramater to the constructor (otherwise cannot access)
   & must also be passed to the constructor of the base class with super
-  
+
   */
 
   constructor() {
     super();
+    console.log("App - Constructor");
   }
 
   /* called after a component has been rendered into the DOM
@@ -35,6 +36,7 @@ class App extends Component {
   when rendered all children are also rendered recursivley
   */
   componentDidMount() {
+    console.log("App - Mounted");
     // this.setState({movies})
   }
 
@@ -57,6 +59,7 @@ class App extends Component {
     this.setState({ counters });
   };
   render() {
+    console.log("App- Rendered");
     return (
       <React.Fragment>
         <NavBar

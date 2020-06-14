@@ -1,6 +1,23 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
+  /* LifeCycle Hooks 
+  
+  called after a componenet has been updated to compare old and new state - when changes occur can make additional AJAX server requests */
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      //  data has been updated & could perform AJAX call to be able to get new data from the server
+    }
+  }
+  // called before a component is removed from the DOM
+  // clean anything up before removing from the DOM to prevent any memory leaks
+  componentWillUnmount() {
+    console.log("Counter - Unmount");
+  }
+
   /* state attributes calling to pop values is only excuted when the attribute/componenet is initialzied */
   state = {
     tags: ["tag1", "tag2"],
@@ -34,7 +51,7 @@ class Counter extends Component {
     return (
       <ul>
         {this.state.tags.map((tag) => (
-          <li ley={tag}>{tag}</li>
+          <li key={tag}>{tag}</li>
         ))}
       </ul>
     );
@@ -42,7 +59,7 @@ class Counter extends Component {
 
   render() {
     /* becase we are modifying here we cannot use const and need to use let in order for it to be updated within instances */
-    console.log("props", this.props);
+    console.log("Counter - Rendered");
 
     return (
       /* set key values within a map in order for DOM to be able to

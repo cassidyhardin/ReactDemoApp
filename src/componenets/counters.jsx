@@ -6,6 +6,7 @@ class Counters extends Component {
   no longer requires needing to include 'this.props' directly reference props arguments to be passed in woth {} */
 
   render() {
+    console.log("Counters - Rendered");
     // extract properties of props of interest within component class
     // arguments are selected from 'this.props'
     const { onReset, counters, onDelete, onIncrement } = this.props;
